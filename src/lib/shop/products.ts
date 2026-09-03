@@ -1,6 +1,6 @@
-import look1 from "@/assets/products/look-1.jpg";
-import look2 from "@/assets/products/look-2.jpg";
-import look3 from "@/assets/products/look-3.jpg";
+import look1 from "@/assets/products/women-ivory-coat.jpg";
+import look2 from "@/assets/products/women-olive-set.jpg";
+import look3 from "@/assets/products/men-knit-polo.jpg";
 
 export type Product = {
   id: number; slug: string; name: string; category: "زنانه" | "مردانه"; type: string;

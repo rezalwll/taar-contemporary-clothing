@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Build shared storefront shell and state
-- [ ] Add home, shop, product, favorites, cart, about, contact routes
-- [ ] Add cohesive local imagery
-- [ ] Validate type safety and responsive interactions
+- [x] Build shared storefront shell and state
+- [x] Add home, shop, product, favorites, cart, about, contact routes
+- [x] Add cohesive local imagery
+- [x] Validate type safety and responsive interactions

@@ -17,7 +17,7 @@ export function ProductCard({ product }: { product: Product }) {
       <Button variant="secondary" size="icon" onClick={() => toggleFavorite(product.id)} className="absolute end-3 top-3 bg-card/90 shadow-none" aria-label={liked ? "حذف از علاقه‌مندی" : "افزودن به علاقه‌مندی"}>
         <Heart className={cn(liked && "fill-sale text-sale")} />
       </Button>
-      <Button onClick={() => addToCart(product.id, product.sizes[0])} className="absolute inset-x-3 bottom-3 h-10 translate-y-3 opacity-0 shadow-none transition-all group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100">
+      <Button onClick={() => addToCart(product.id, product.sizes[0] ?? "M")} className="absolute inset-x-3 bottom-3 h-10 translate-y-3 opacity-0 shadow-none transition-all group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100">
         <ShoppingBag /> افزودن سریع
       </Button>
     </div>

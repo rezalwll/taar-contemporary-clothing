@@ -26,7 +26,6 @@
   --color-clay: var(--clay);
   --color-bone: var(--bone);
   --color-sale: var(--sale);
-  --color-hero-overlay: var(--hero-overlay);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

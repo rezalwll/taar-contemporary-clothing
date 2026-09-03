@@ -94,6 +94,7 @@
   --clay: oklch(0.68 0.055 60);
   --bone: oklch(0.955 0.01 92);
   --sale: oklch(0.55 0.13 30);
+  --hero-overlay: linear-gradient(90deg, oklch(0.98 0.006 95 / 0.97) 0%, oklch(0.98 0.006 95 / 0.82) 38%, transparent 70%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -163,7 +164,20 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
+  }
+
+  button, a, input, textarea, select { outline-offset: 3px; }
+  ::selection { background: var(--olive); color: var(--olive-foreground); }
+}
+
+@utility bg-hero-overlay {
+  background: var(--hero-overlay);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --hero-overlay: linear-gradient(0deg, oklch(0.98 0.006 95 / 0.98) 0%, oklch(0.98 0.006 95 / 0.8) 46%, transparent 78%);
   }
 }
 

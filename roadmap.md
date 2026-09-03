@@ -1,5 +1,6 @@
-# Roadmap
-- [x] Build shared storefront shell and state
-- [x] Add home, shop, product, favorites, cart, about, contact routes
-- [x] Add cohesive local imagery
-- [x] Validate type safety and responsive interactions
+# Roadmap — فروشگاه تار
+- [x] بازسازی هویت بصری، پوسته مشترک و داده محصولات
+- [x] بازطراحی خانه، فروشگاه، محصول، علاقه‌مندی و سبد
+- [x] افزودن تسویه‌حساب، پرسش‌ها و قوانین
+- [x] تکمیل درباره، تماس، متادیتا و وضعیت‌های خطا
+- [x] اعتبارسنجی TypeScript و مرور دسکتاپ/موبایل

@@ -1,109 +1,32 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  Outlet,
-  Link,
-  createRootRouteWithContext,
-  useRouter,
-  HeadContent,
-  Scripts,
-} from "@tanstack/react-router";
+import { Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/button";
 import { SiteShell } from "@/components/shop/site-shell";
 import { StoreProvider } from "@/lib/shop/store";
-
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">صفحه پیدا نشد</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          نشانی این صفحه درست نیست یا صفحه جابه‌جا شده است.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            بازگشت به خانه
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+  return <main className="flex min-h-[70vh] items-center justify-center px-5"><div className="text-center"><span className="display-type text-[10rem] leading-none text-seal">۴۰۴</span><h1 className="mt-2 text-3xl font-semibold">این صفحه از مجموعه خارج شده</h1><p className="mt-3 text-muted-foreground">نشانی را دوباره بررسی کنید یا به ویترین تار برگردید.</p><Button className="mt-7" asChild><Link to="/">بازگشت به خانه</Link></Button></div></main>;
 }
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          این صفحه بارگذاری نشد
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          مشکلی پیش آمده است. دوباره تلاش کنید یا به صفحه اصلی برگردید.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-              تلاش دوباره
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            صفحه اصلی
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+  useEffect(() => { reportLovableError(error, { boundary: "tanstack_root_error_component" }); }, [error]);
+  return <main className="flex min-h-screen items-center justify-center bg-background px-5"><div className="max-w-md text-center"><p className="text-sm text-seal">خطای موقت</p><h1 className="mt-3 text-3xl font-semibold">این صفحه باز نشد</h1><p className="mt-3 text-muted-foreground">لطفاً دوباره تلاش کنید.</p><div className="mt-7 flex justify-center gap-2"><Button onClick={() => { router.invalidate(); reset(); }}>تلاش دوباره</Button><Button variant="outline" asChild><a href="/">صفحه اصلی</a></Button></div></div></main>;
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "سُهی | بوتیک پوشاک مینیمال" },
-      {
-        name: "description",
-        content:
-          "سُهی، بوتیک پوشاک زنانه و مردانه با طراحی مینیمال، پارچه‌های باکیفیت و ارسال به سراسر ایران.",
-      },
-      { property: "og:title", content: "سُهی | بوتیک پوشاک مینیمال" },
-      {
-        property: "og:description",
-        content: "پوشاک مینیمال زنانه و مردانه با کیفیت پرمیوم و قیمت منصفانه.",
-      },
-    ],
+    meta: [{ charSet: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap",
-      },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -112,29 +35,5 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="fa" dir="rtl">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <StoreProvider>
-        <SiteShell><Outlet /></SiteShell>
-        <Toaster position="bottom-center" richColors />
-      </StoreProvider>
-    </QueryClientProvider>
-  );
-}
+function RootShell({ children }: { children: ReactNode }) { return <html lang="fa" dir="rtl"><head><HeadContent /></head><body>{children}<Scripts /></body></html>; }
+function RootComponent() { const { queryClient } = Route.useRouteContext(); return <QueryClientProvider client={queryClient}><StoreProvider><SiteShell><Outlet /></SiteShell><Toaster position="bottom-center" richColors /></StoreProvider></QueryClientProvider>; }
